@@ -2,21 +2,27 @@
 
 Utilizando go routines juntamente com mutex do pacote sync, para resolver o problema de concorrência no processo de inserção no objeto do tipo map, entre agentes paralelos.
 
+Como funciona?
+
+Temos 9 tarefas e 4 trabalhadores em **paralelo**, quem realizar mais tarefas, vence.
+
 ```bash
-❯ go run main.go
-0 Erickson
-1 Japa
-2 Japa
-3 Erickson
-4 Japa
-5 Japa
-6 Japa
-7 Japa
-8 Japa
-9 Japa
+task 0 -> Marcos
+task 1 -> Japa
+task 2 -> Erickson
+task 3 -> Joab
+task 4 -> Joab
+task 5 -> Japa
+task 6 -> Marcos
+task 7 -> Erickson
+task 8 -> Marcos
 --------------------------------
-Japa: 8
-Erickson: 2
+Erickson -> 2
+Joab -> 2
+Marcos -> 3
+Japa -> 2
+--------------------------------
+O infitete foi: Marcos
 ```
 
 <div>

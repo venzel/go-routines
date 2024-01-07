@@ -53,9 +53,6 @@ func (tsk *Task) publish(ch chan int, tasks int) {
 }
 
 func (tsk *Task) ranking(tasks int, agents int) {
-	fmt.Println("Temos", tasks, "tarefas e", agents, "trabalhadores em paralelo, quem realizar mais tarefas, vence.")
-	fmt.Println("--------------------------------")
-
 	mp := map[*Agent]int{}
 
 	for i := 0; i < tasks; i++ {

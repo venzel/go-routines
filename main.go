@@ -8,7 +8,7 @@ func main() {
 	joab := channels.NewAgent("Joab")
 	marcos := channels.NewAgent("Marcos")
 
-	tasks := 9
+	tasks := 10
 	agents := []*channels.Agent{japa, erickson, joab, marcos}
 
 	channels.StartRound(tasks, agents)

@@ -7,6 +7,7 @@ package channels
 
 import (
 	"fmt"
+	"math/rand"
 	"sync"
 	"time"
 )
@@ -40,7 +41,7 @@ func (tsk *Task) write(index int, agent *Agent, wg *sync.WaitGroup) {
 func (tsk *Task) worker(agent *Agent, ch chan int, wg *sync.WaitGroup) {
 	for i := range ch {
 		tsk.write(i, agent, wg)
-		time.Sleep(time.Millisecond * 1)
+		time.Sleep(time.Millisecond * time.Duration(rand.Intn(3)))
 	}
 
 	close(ch)

@@ -7,22 +7,24 @@ Como funciona?
 Temos 9 tarefas e 4 trabalhadores em **paralelo**, quem realizar mais tarefas, vence.
 
 ```bash
+❯ go run main.go
 task 0 -> Marcos
 task 1 -> Japa
-task 2 -> Erickson
-task 3 -> Joab
-task 4 -> Joab
-task 5 -> Japa
-task 6 -> Marcos
-task 7 -> Erickson
+task 2 -> Japa
+task 3 -> Japa
+task 4 -> Erickson
+task 5 -> Joab
+task 6 -> Japa
+task 7 -> Joab
 task 8 -> Marcos
+task 9 -> Japa
 --------------------------------
-Erickson -> 2
+Marcos -> 2
+Japa -> 5
+Erickson -> 1
 Joab -> 2
-Marcos -> 3
-Japa -> 2
 --------------------------------
-O infitete foi: Marcos
+O infitete foi: Japa
 ```
 
 ## main.go
@@ -95,7 +97,7 @@ func (tsk *Task) write(index int, agent *Agent, wg *sync.WaitGroup) {
 func (tsk *Task) worker(agent *Agent, ch chan int, wg *sync.WaitGroup) {
 	for i := range ch {
 		tsk.write(i, agent, wg)
-		time.Sleep(time.Millisecond * 1)
+		time.Sleep(time.Millisecond * time.Duration(rand.Intn(3)))
 	}
 
 	close(ch)

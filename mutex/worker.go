@@ -3,7 +3,7 @@
  * @description O algoritmo resolve problema de concorrência em inserção de dados em um mapa
  */
 
-package channels
+package mutex
 
 import (
 	"fmt"
@@ -80,7 +80,15 @@ func (tsk *Task) ranking(tasks int, agents int) {
 	fmt.Println("O infitete foi:", agent.Name)
 }
 
-func StartRound(tasks int, agents []*Agent) {
+func Execute() {
+	japa := NewAgent("Japa")
+	erickson := NewAgent("Erickson")
+	joab := NewAgent("Joab")
+	marcos := NewAgent("Marcos")
+
+	tasks := 10
+	agents := []*Agent{japa, erickson, joab, marcos}
+
 	tsk := NewTask()
 
 	ch := make(chan int)

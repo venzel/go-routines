@@ -1,15 +1,12 @@
 package main
 
-import "routines/channels"
+import (
+	"routines/channels"
+	"routines/mutex"
+)
 
 func main() {
-	japa := channels.NewAgent("Japa")
-	erickson := channels.NewAgent("Erickson")
-	joab := channels.NewAgent("Joab")
-	marcos := channels.NewAgent("Marcos")
+	mutex.Execute()
 
-	tasks := 10
-	agents := []*channels.Agent{japa, erickson, joab, marcos}
-
-	channels.StartRound(tasks, agents)
+	channels.Execute()
 }

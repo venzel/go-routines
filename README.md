@@ -6,6 +6,8 @@ Como funciona?
 
 Temos 9 tarefas e 4 trabalhadores em **paralelo**, quem realizar mais tarefas, vence.
 
+**Observação**: Como está utilizando o Multex para evitar colisão, se torna mais complexo o desenvolvimento do código, uma alteranativa para evitar a utilização do Multex é utilizar channels com o recurso de select.
+
 ```bash
 ❯ go run main.go
 task 0 -> Marcos
@@ -52,7 +54,7 @@ func main() {
 }
 ```
 
-## workers.go
+## mutex/worker.go
 
 ```go
 /**
